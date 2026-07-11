@@ -26,6 +26,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "build": "tsup",
     "format:check": "prettier --check \"**/*.{ts,js,json,md}\""
   },
   "keywords": [

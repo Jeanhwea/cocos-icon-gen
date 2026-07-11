@@ -1,6 +1,6 @@
 {
   "name": "@jeansoft/cocos-icon-gen",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Generate iOS, macOS, and Windows app icons for Cocos Creator projects from a single source image",
   "author": "jeansoft",
   "homepage": "https://github.com/Jeanhwea/cocos-icon-gen#readme",

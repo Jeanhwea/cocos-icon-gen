@@ -1,72 +1,38 @@
 {
   "name": "@jeansoft/cocos-icon-gen",
-  "version": "0.1.9",
-  "description": "Generate app icons (iOS/macOS/Windows) for Cocos projects from a source image",
-  "type": "module",
-  "bin": {
-    "cocos-icon-gen": "./dist/cli.js"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prepublishOnly": "pnpm build",
-    "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
-    "build": "node scripts/sync-version.mjs && tsup",
-    "format:check": "prettier --check \"**/*.{ts,js,json,md}\""
-  },
-  "keywords": [
-    "cocos",
-    "cocos-creator",
-    "app-icon",
-    "icon",
-    "ios",
-    "macos",
-    "windows"
-  ],
-  "author": "jeansoft",
+  "version": "0.1.0",
+  "description": "Generate iOS, macOS, and Windows app icons for Cocos Creator projects from a single source image",
   "license": "MIT",
+  "author": "jeansoft",
+  "homepage": "https://github.com/jeansoft/cocos-icon-gen#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jeanhwea/cocos-icon-gen.git"
+    "url": "https://github.com/jeansoft/cocos-icon-gen.git"
   },
-  "bugs": {
-    "url": "https://github.com/Jeanhwea/cocos-icon-gen/issues"
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "cocos-icon-gen": "dist/cli.js"
   },
-  "homepage": "https://github.com/Jeanhwea/cocos-icon-gen#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  },
-  "packageManager": "pnpm@10.33.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "format": "prettier --check ."
   },
   "dependencies": {
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "png-to-ico": "^2.1.5"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "prettier": "^3.9.4",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "@types/node": "^22.14.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   }
 }

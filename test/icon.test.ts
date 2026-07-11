@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IOS_ICONS, IOS_ICON_NAMES, parseIconSize } from '../src/icon';
+import { IOS_ICONS, IOS_ICON_NAMES, parseIconSize } from '../src/generators/ios';
 
 describe('parseIconSize', () => {
   it('parses simple icon names (no @scale)', () => {

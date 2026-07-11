@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeAll, afterAll } from 'vitest';
-import { existsSync, mkdirSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import sharp from 'sharp';
 import { genIosIcons, genMacIcon, genWinIcon } from '../src/icon.js';
@@ -13,8 +13,8 @@ beforeAll(async () => {
   if (!existsSync(SOURCE_SRC)) {
     await sharp({
       create: {
-        width: 256,
-        height: 256,
+        width: 1024,
+        height: 1024,
         channels: 4,
         background: { r: 255, g: 0, b: 0, alpha: 1 },
       },

@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs';
-import { createIcnsFromPng } from '@/utils/icns';
+import { createIcnsFromPng } from '../utils/icns.js';
 import { dirname } from 'node:path';
 import fs from 'node:fs';
 

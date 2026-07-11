@@ -1,5 +1,5 @@
-import { genIosIcons } from './ios';
-import { genMacIcon } from './mac';
-import { genWinIcon } from './win';
+import { genIosIcons } from './ios.js';
+import { genMacIcon } from './mac.js';
+import { genWinIcon } from './win.js';
 
 export { genIosIcons, genMacIcon, genWinIcon };

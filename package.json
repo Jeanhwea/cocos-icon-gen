@@ -2,12 +2,11 @@
   "name": "@jeansoft/cocos-icon-gen",
   "version": "0.2.3",
   "description": "Generate iOS, macOS, and Windows app icons for Cocos Creator projects from a single source image",
-  "license": "MIT",
   "author": "jeansoft",
-  "homepage": "https://github.com/jeansoft/cocos-icon-gen#readme",
+  "homepage": "https://github.com/Jeanhwea/cocos-icon-gen#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeansoft/cocos-icon-gen.git"
+    "url": "git+https://github.com/Jeanhwea/cocos-icon-gen.git"
   },
   "packageManager": "pnpm@10.8.0",
   "type": "module",

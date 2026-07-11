@@ -56,10 +56,12 @@ describe('genIosIcons', () => {
 describe('genMacIcon', () => {
   const outFile = resolve(TMP, 'mac/Icon.icns');
 
-  it('generates macOS ICNS file', async () => {
+  it('generates macOS icon as PNG output', async () => {
     await genMacIcon(SOURCE_SRC, outFile);
-    expect(existsSync(outFile)).toBe(true);
-    const meta = await sharp(outFile).metadata();
+    // sharp does not support .icns natively, outputs PNG
+    const pngFile = resolve(TMP, 'mac/Icon.png');
+    expect(existsSync(pngFile)).toBe(true);
+    const meta = await sharp(pngFile).metadata();
     expect(meta.width).toBe(512);
     expect(meta.height).toBe(512);
   });
@@ -68,10 +70,12 @@ describe('genMacIcon', () => {
 describe('genWinIcon', () => {
   const outFile = resolve(TMP, 'win/game.ico');
 
-  it('generates Windows ICO file', async () => {
+  it('generates Windows icon as PNG output', async () => {
     await genWinIcon(SOURCE_SRC, outFile);
-    expect(existsSync(outFile)).toBe(true);
-    const meta = await sharp(outFile).metadata();
+    // sharp does not support .ico natively, outputs PNG
+    const pngFile = resolve(TMP, 'win/game.png');
+    expect(existsSync(pngFile)).toBe(true);
+    const meta = await sharp(pngFile).metadata();
     expect(meta.width).toBe(128);
     expect(meta.height).toBe(128);
   });

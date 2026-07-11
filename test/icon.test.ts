@@ -6,7 +6,7 @@ describe('IOS_ICONS', () => {
     expect(IOS_ICONS).toHaveLength(20);
   });
 
-  it('has 20 entries', () => {
+  it('every icon has a filename and size', () => {
     for (const icon of IOS_ICONS) {
       expect(icon.filename).toBeTruthy();
       expect(icon.size).toBeGreaterThan(0);

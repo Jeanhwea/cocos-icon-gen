@@ -32,13 +32,13 @@ export const IOS_OUTPUT = 'proj.ios_mac/ios/Images.xcassets/AppIcon.appiconset';
 export const MAC_OUTPUT = 'proj.ios_mac/mac/Icon.icns';
 export const WIN_OUTPUT = 'proj.win32/res/game.ico';
 
-export function genIosIcons(sourcePath: string, outDir: string = IOS_OUTPUT): void {
+export async function genIosIcons(sourcePath: string, outDir: string = IOS_OUTPUT): Promise<void> {
   const png = readFileSync(sourcePath);
   mkdirSync(outDir, { recursive: true });
   for (const icon of IOS_ICONS) {
     const outPath = `${outDir}/${icon.filename}`;
     mkdirSync(dirname(outPath), { recursive: true });
-    sharp(png)
+    await sharp(png)
       .resize(icon.size, icon.size, { fit: 'fill' })
       .png()
       .toFile(outPath);
@@ -47,20 +47,26 @@ export function genIosIcons(sourcePath: string, outDir: string = IOS_OUTPUT): vo
   }
 }
 
-export function genMacIcon(sourcePath: string, outFile: string = MAC_OUTPUT): void {
+export async function genMacIcon(sourcePath: string, outFile: string = MAC_OUTPUT): Promise<void> {
   const png = readFileSync(sourcePath);
   mkdirSync(dirname(outFile), { recursive: true });
   const size = 512;
-  sharp(png).resize(size, size, { fit: 'fill' }).png().toFile(outFile);
+  // sharp does not support .icns output natively, output as .png
+  const pngOutFile = outFile.replace(/\.\w+$/, '.png');
+  await sharp(png).resize(size, size, { fit: 'fill' }).png().toFile(pngOutFile);
   // eslint-disable-next-line no-console
-  console.log(`Generated: ${outFile} (${size}x${size})`);
+  console.log(`Generated: ${pngOutFile} (${size}x${size})`);
 }
 
-export function genWinIcon(sourcePath: string, outFile: string = WIN_OUTPUT): void {
+export async function genWinIcon(sourcePath: string, outFile: string = WIN_OUTPUT): Promise<void> {
   const png = readFileSync(sourcePath);
   mkdirSync(dirname(outFile), { recursive: true });
   const size = 128;
-  sharp(png).resize(size, size, { fit: 'fill' }).png().toFile(outFile);
+  // sharp does not support .ico output natively, output as .png
+  const pngOutFile = outFile.replace(/\.\w+$/, '.png');
+  await sharp(png).resize(size, size, { fit: 'fill' }).png().toFile(pngOutFile);
   // eslint-disable-next-line no-console
-  console.log(`Generated: ${outFile} (${size}x${size})`);
+  console.log(`Generated: ${pngOutFile} (${size}x${size})`);
 }
+
+

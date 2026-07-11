@@ -1,0 +1,3 @@
+export { genIosIcons, genMacIcon, genWinIcon, IOS_ICONS, IOS_OUTPUT, MAC_OUTPUT, WIN_OUTPUT } from './icon.js';
+export type { IconInfo, GenOptions } from './types.js';
+export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from './version.js';

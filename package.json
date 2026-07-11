@@ -21,8 +21,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "node scripts/sync-version.mjs && pnpm build",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

@@ -20,10 +20,9 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "sync-version": "node scripts/sync-version.mjs",
-    "build": "pnpm run sync-version && pnpm run clean && tsc --project tsconfig.build.json",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm run sync-version && vitest run",
+    "test": "vitest run",
     "format": "prettier --check .",
     "prepublishOnly": "pnpm run build"
   },

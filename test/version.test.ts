@@ -3,7 +3,7 @@ import { APP_NAME, APP_VERSION, APP_DESCRIPTION } from '../src/version.js';
 
 describe('version', () => {
   it('has a name', () => {
-    expect(APP_NAME).toBe('cocos-icon-gen');
+    expect(APP_NAME).toBe('@jeansoft/cocos-icon-gen');
   });
 
   it('has a version string', () => {

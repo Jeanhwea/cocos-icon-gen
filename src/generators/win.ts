@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { createIcoFromPngs } from '../utils/ico.js';
+import { createIcoFromPngs } from '@/utils/ico';
 
 
 export const WIN_OUTPUT = 'proj.win32/res/game.ico';

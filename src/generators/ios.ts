@@ -1,8 +1,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import type { IconInfo } from '../types.js';
-import { resizeImage } from '../utils/image.js';
+import type { IconInfo } from '@/types';
+import { resizeImage } from '@/utils/image';
 
 /** iOS icon filenames — order matches the Python original */
 export const IOS_ICON_NAMES: string[] = [

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { parseArgs } from 'node:util';
-import { genIosIcons, genMacIcon, genWinIcon } from '@/icon.js';
-import { APP_NAME, APP_VERSION } from '@/version.js';
-import { IOS_OUTPUT } from '@/generators/ios.js';
-import { MAC_OUTPUT } from '@/generators/mac.js';
-import { WIN_OUTPUT } from '@/generators/win.js';
+import { genIosIcons, genMacIcon, genWinIcon } from '@/icon';
+import { APP_NAME, APP_VERSION } from '@/version';
+import { IOS_OUTPUT } from '@/generators/ios';
+import { MAC_OUTPUT } from '@/generators/mac';
+import { WIN_OUTPUT } from '@/generators/win';
 
 
 const APP_DESCRIPTION = 'Generate app icons for Cocos projects';

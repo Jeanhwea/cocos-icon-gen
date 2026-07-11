@@ -4,8 +4,8 @@ export {
   IOS_OUTPUT,
   genIosIcons,
   parseIconSize,
-} from '@/generators/ios.js';
+} from '@/generators/ios';
 
-export { MAC_OUTPUT, genMacIcon } from '@/generators/mac.js';
+export { MAC_OUTPUT, genMacIcon } from '@/generators/mac';
 
-export { WIN_OUTPUT, genWinIcon } from '@/generators/win.js';
+export { WIN_OUTPUT, genWinIcon } from '@/generators/win';

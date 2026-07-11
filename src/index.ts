@@ -8,8 +8,8 @@ export {
   MAC_OUTPUT,
   WIN_OUTPUT,
   parseIconSize,
-} from '@/icon.js';
+} from '@/icon';
 
-export type { IconInfo, GenOptions } from '@/types.js';
+export type { IconInfo, GenOptions } from '@/types';
 
-export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from '@/version.js';
+export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from '@/version';

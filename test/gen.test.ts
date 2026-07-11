@@ -2,7 +2,7 @@ import { describe, expect, it, beforeAll, afterAll } from 'vitest';
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import sharp from 'sharp';
-import { genIosIcons, genMacIcon, genWinIcon } from '../src/icon.js';
+import { genIosIcons, genMacIcon, genWinIcon } from '../src/icon';
 
 const TMP = resolve('test/.temp-gen');
 const SOURCE_SRC = resolve('test/fixtures/source.png');

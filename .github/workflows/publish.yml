@@ -23,6 +23,8 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
 
+      - run: npm install -g npm@latest
+
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm typecheck

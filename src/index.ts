@@ -10,6 +10,6 @@ export {
   parseIconSize,
 } from '@/icon';
 
-export type { IconInfo, GenOptions } from '@/types';
+export type { IconInfo } from '@/types';
 
 export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from '@/version';

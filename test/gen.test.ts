@@ -58,6 +58,7 @@ describe('genIosIcons', () => {
     for (const f of files) {
       const fp = resolve(outDir, f);
       expect(existsSync(fp), `missing ${f}`).toBe(true);
+      expect(fp, `path mismatch: ${fp}`).toMatch(/Icon-[\d.]+@?\d*x?\.png$/);
       const meta = await sharp(fp).metadata();
       expect(meta.width).toBeGreaterThan(0);
       expect(meta.height).toBeGreaterThan(0);
@@ -72,14 +73,15 @@ describe('genIosIcons', () => {
 describe('genMacIcon', () => {
   const outFile = resolve(TMP, 'mac/Icon.icns');
 
-  it('generates macOS icon as PNG output', async () => {
+  it('generates macOS icon as ICNS output', async () => {
     await genMacIcon(SOURCE_SRC, outFile);
-    // sharp does not support .icns natively, outputs PNG
-    const pngFile = resolve(TMP, 'mac/Icon.png');
-    expect(existsSync(pngFile)).toBe(true);
-    const meta = await sharp(pngFile).metadata();
-    expect(meta.width).toBe(512);
-    expect(meta.height).toBe(512);
+    expect(outFile, `mac icns path mismatch: ${outFile}`).toMatch(/Icon\.icns$/);
+    expect(existsSync(outFile)).toBe(true);
+    const buffer = readFileSync(outFile);
+    // Validate ICNS magic bytes
+    expect(buffer.slice(0, 4).toString()).toBe('icns');
+    const totalSize = buffer.readUInt32BE(4);
+    expect(totalSize).toBeGreaterThan(512);
   });
 
   it('throws when source image does not exist', async () => {
@@ -94,12 +96,12 @@ describe('genWinIcon', () => {
     await genWinIcon(SOURCE_SRC, outFile);
     // sharp does not support .ico natively, outputs PNG
     const pngFile = resolve(TMP, 'win/game.png');
+    expect(outFile, `win path mismatch: ${outFile}`).toMatch(/game\.ico$/);
     expect(existsSync(pngFile)).toBe(true);
     const meta = await sharp(pngFile).metadata();
     expect(meta.width).toBe(128);
     expect(meta.height).toBe(128);
   });
-
   it('throws when source image does not exist', async () => {
     await expect(genWinIcon(MISSING_SRC, outFile)).rejects.toThrow(/Source image not found/);
   });

@@ -6,4 +6,3 @@ coverage
 .idea
 .vscode
 temp
-src/version.ts

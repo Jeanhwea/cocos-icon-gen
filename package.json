@@ -16,8 +16,7 @@
     "cocos-icon-gen": "dist/cli.js"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "clean": "rm -rf dist",

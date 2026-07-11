@@ -8,8 +8,8 @@ export {
   MAC_OUTPUT,
   WIN_OUTPUT,
   parseIconSize,
-} from '@/icon';
+} from './icon';
 
-export type { IconInfo } from '@/types';
+export type { IconInfo } from './types';
 
-export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from '@/version';
+export { APP_NAME, APP_VERSION, APP_DESCRIPTION } from './version';

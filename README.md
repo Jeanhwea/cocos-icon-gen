@@ -23,6 +23,7 @@ npx @jeansoft/cocos-icon-gen <source-image> [output-dir]
 ```bash
 npx @jeansoft/cocos-icon-gen icon.png ./my-icons
 ```
+
 输出目录会生成以下子目录和文件：
 
 - `ios/` — iOS 图标集（20 个尺寸，含 @2x/@3x）

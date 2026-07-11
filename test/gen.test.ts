@@ -6,6 +6,7 @@ import { genIosIcons, genMacIcon, genWinIcon } from '../src/icon.js';
 
 const TMP = resolve('test/.temp-gen');
 const SOURCE_SRC = resolve('test/fixtures/source.png');
+const MISSING_SRC = resolve('test/fixtures/nonexistent.png');
 
 beforeAll(async () => {
   mkdirSync(resolve('test/fixtures'), { recursive: true });
@@ -30,17 +31,28 @@ afterAll(() => {
 describe('genIosIcons', () => {
   const outDir = resolve(TMP, 'ios');
 
-  it('generates all iOS png icon files', async () => {
+  it('generates all iOS png icon files (matching Python original order)', async () => {
     await genIosIcons(SOURCE_SRC, outDir);
     const files = [
-      'Icon-20.png', 'Icon-20@2x.png', 'Icon-20@3x.png',
-      'Icon-29.png', 'Icon-29@2x.png', 'Icon-29@3x.png',
-      'Icon-40.png', 'Icon-40@2x.png', 'Icon-40@3x.png',
-      'Icon-50.png', 'Icon-50@2x.png',
-      'Icon-57.png', 'Icon-57@2x.png',
-      'Icon-60@2x.png', 'Icon-60@3x.png',
-      'Icon-72.png', 'Icon-72@2x.png',
-      'Icon-76.png', 'Icon-76@2x.png',
+      'Icon-20.png',
+      'Icon-20@2x.png',
+      'Icon-20@3x.png',
+      'Icon-29.png',
+      'Icon-29@2x.png',
+      'Icon-29@3x.png',
+      'Icon-40.png',
+      'Icon-40@2x.png',
+      'Icon-40@3x.png',
+      'Icon-50.png',
+      'Icon-50@2x.png',
+      'Icon-57.png',
+      'Icon-57@2x.png',
+      'Icon-60@2x.png',
+      'Icon-60@3x.png',
+      'Icon-72.png',
+      'Icon-72@2x.png',
+      'Icon-76.png',
+      'Icon-76@2x.png',
       'Icon-83.5@2x.png',
     ];
     for (const f of files) {
@@ -50,6 +62,10 @@ describe('genIosIcons', () => {
       expect(meta.width).toBeGreaterThan(0);
       expect(meta.height).toBeGreaterThan(0);
     }
+  });
+
+  it('throws when source image does not exist', async () => {
+    await expect(genIosIcons(MISSING_SRC, outDir)).rejects.toThrow(/Source image not found/);
   });
 });
 
@@ -65,6 +81,10 @@ describe('genMacIcon', () => {
     expect(meta.width).toBe(512);
     expect(meta.height).toBe(512);
   });
+
+  it('throws when source image does not exist', async () => {
+    await expect(genMacIcon(MISSING_SRC, outFile)).rejects.toThrow(/Source image not found/);
+  });
 });
 
 describe('genWinIcon', () => {
@@ -78,5 +98,9 @@ describe('genWinIcon', () => {
     const meta = await sharp(pngFile).metadata();
     expect(meta.width).toBe(128);
     expect(meta.height).toBe(128);
+  });
+
+  it('throws when source image does not exist', async () => {
+    await expect(genWinIcon(MISSING_SRC, outFile)).rejects.toThrow(/Source image not found/);
   });
 });

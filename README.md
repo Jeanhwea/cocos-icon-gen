@@ -24,6 +24,7 @@ npx @jeansoft/cocos-icon-gen icon.png ./my-icons
 ```
 
 输出目录会生成以下子目录和文件：
+
 - `ios/` — iOS 图标集（20 个尺寸，含 @2x/@3x）
 - `mac/` — macOS 应用图标（真正的 ICNS 格式，包含 13 个尺寸 16×16 到 1024×1024）
 - `win/` — Windows 图标集（输出为 128×128 PNG 文件，命名为 `game.ico`；由于兼容性原因，文件名后缀为 `.ico`，但实际内容为 PNG 格式）

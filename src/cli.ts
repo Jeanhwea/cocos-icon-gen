@@ -6,7 +6,6 @@ import { IOS_OUTPUT } from './generators/ios';
 import { MAC_OUTPUT } from './generators/mac';
 import { WIN_OUTPUT } from './generators/win';
 
-
 const APP_DESCRIPTION = 'Generate app icons for Cocos projects';
 
 function printUsage(): void {

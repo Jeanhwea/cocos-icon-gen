@@ -13,8 +13,8 @@ async function createIco(pngBuffers: Buffer[]): Promise<Buffer> {
   const headerSize = 6;
   const dirEntrySize = 16;
   const header = Buffer.alloc(headerSize + numImages * dirEntrySize);
-  header.writeUInt16LE(0, 0);       // reserved
-  header.writeUInt16LE(1, 2);       // ICO type (1 = .ico)
+  header.writeUInt16LE(0, 0); // reserved
+  header.writeUInt16LE(1, 2); // ICO type (1 = .ico)
   header.writeUInt16LE(numImages, 4); // count
 
   let offset = headerSize + numImages * dirEntrySize;
@@ -26,14 +26,14 @@ async function createIco(pngBuffers: Buffer[]): Promise<Buffer> {
     const byteSize = png.length;
 
     const entryOffset = headerSize + i * dirEntrySize;
-    header.writeUInt8(w >= 256 ? 0 : w, entryOffset);       // width (0 = 256)
-    header.writeUInt8(h >= 256 ? 0 : h, entryOffset + 1);   // height (0 = 256)
-    header.writeUInt8(0, entryOffset + 2);                   // color palette
-    header.writeUInt8(0, entryOffset + 3);                   // reserved
-    header.writeUInt16LE(1, entryOffset + 4);                // color planes
-    header.writeUInt16LE(32, entryOffset + 6);               // bits per pixel
-    header.writeUInt32LE(byteSize, entryOffset + 8);         // size
-    header.writeUInt32LE(offset, entryOffset + 12);          // offset in file
+    header.writeUInt8(w >= 256 ? 0 : w, entryOffset); // width (0 = 256)
+    header.writeUInt8(h >= 256 ? 0 : h, entryOffset + 1); // height (0 = 256)
+    header.writeUInt8(0, entryOffset + 2); // color palette
+    header.writeUInt8(0, entryOffset + 3); // reserved
+    header.writeUInt16LE(1, entryOffset + 4); // color planes
+    header.writeUInt16LE(32, entryOffset + 6); // bits per pixel
+    header.writeUInt32LE(byteSize, entryOffset + 8); // size
+    header.writeUInt32LE(offset, entryOffset + 12); // offset in file
     offset += byteSize;
   }
 

@@ -23,8 +23,7 @@
     "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "format": "prettier --check .",
-    "prepublishOnly": "pnpm run build"
+    "format": "prettier --check ."
   },
   "dependencies": {
     "sharp": "^0.33.5",

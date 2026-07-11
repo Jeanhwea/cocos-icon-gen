@@ -1,6 +1,6 @@
 {
   "name": "@jeansoft/cocos-icon-gen",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Generate app icons (iOS/macOS/Windows) for Cocos projects from a source image",
   "type": "module",
   "bin": {

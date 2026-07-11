@@ -1,7 +1,8 @@
 import { existsSync } from 'node:fs';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { resizeImage } from '../utils/image.js';
+import { createIcoFromPngs } from '../utils/ico.js';
+
 
 export const WIN_OUTPUT = 'proj.win32/res/game.ico';
 
@@ -10,9 +11,7 @@ export async function genWinIcon(sourcePath: string, outFile: string = WIN_OUTPU
     throw new Error(`Source image not found: ${sourcePath}`);
   }
   mkdirSync(dirname(outFile), { recursive: true });
-  const size = 128;
-  const pngOutFile = outFile.replace(/\.\w+$/, '.png');
-  await resizeImage(sourcePath, pngOutFile, size);
+  await createIcoFromPngs(sourcePath, outFile);
   // eslint-disable-next-line no-console
-  console.log(`Generated: ${outFile} (${size}x${size})`);
+  console.log(`Generated: ${outFile} (multi-resolution ICO)`);
 }

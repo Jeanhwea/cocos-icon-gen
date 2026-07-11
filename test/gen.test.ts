@@ -92,15 +92,13 @@ describe('genMacIcon', () => {
 describe('genWinIcon', () => {
   const outFile = resolve(TMP, 'win/game.ico');
 
-  it('generates Windows icon as PNG output', async () => {
+  it('generates Windows icon as ICO output', async () => {
     await genWinIcon(SOURCE_SRC, outFile);
-    // sharp does not support .ico natively, outputs PNG
-    const pngFile = resolve(TMP, 'win/game.png');
-    expect(outFile, `win path mismatch: ${outFile}`).toMatch(/game\.ico$/);
-    expect(existsSync(pngFile)).toBe(true);
-    const meta = await sharp(pngFile).metadata();
-    expect(meta.width).toBe(128);
-    expect(meta.height).toBe(128);
+    expect(existsSync(outFile)).toBe(true);
+    const meta = await sharp(readFileSync(outFile).subarray(102)).metadata();
+    // First PNG in the ICO should be 16x16
+    expect(meta.width).toBe(16);
+    expect(meta.height).toBe(16);
   });
   it('throws when source image does not exist', async () => {
     await expect(genWinIcon(MISSING_SRC, outFile)).rejects.toThrow(/Source image not found/);

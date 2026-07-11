@@ -12,4 +12,9 @@ export default defineConfig({
   splitting: false,
   target: 'es2022',
   external: ['sharp'],
+  esbuildOptions(options) {
+    options.alias = {
+      '@': './src',
+    };
+  },
 });

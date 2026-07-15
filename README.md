@@ -1,5 +1,8 @@
 # @jeansoft/cocos-icon-gen
 
+[![npm version](https://img.shields.io/npm/v/@jeansoft/cocos-atlas-tool.svg)](https://www.npmjs.com/package/@jeansoft/cocos-icon-gen)
+[![license](https://img.shields.io/npm/l/@jeansoft/cocos-atlas-tool.svg)](https://github.com/Jeanhwea/cocos-icon-gen/blob/master/LICENSE)
+
 Generate iOS, macOS, and Windows app icons for Cocos Creator projects from a single source image.
 
 ## Install
